@@ -1,0 +1,22 @@
+<p>Upload a new File
+<form method="post" action="/upload" enctype="multipart/form-data">
+    <input type="text" name="file_name" placeholder="Enter file name">
+    <input type="file" accept=".csv" name="file">
+    <input type="submit" class="button">
+</form>
+</p>
+<p>
+    All uploaded Files
+    <br>
+<ul>
+    <% if(locals.files){%>
+        <%for (file of files){%>
+            <li>
+                <a href="file/<%=file.id%>">
+                    <%=file.name%>
+                </a>
+            </li>
+            <%}%>
+                <%}%>
+</ul>
+</p>

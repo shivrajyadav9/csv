@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/file.css">
+<script src="/js/file.js"></script>
+<div class="file-heading">
+    <%=file_name%>
+</div>
+<br>
+<input type="text" id="search-input" placeholder="Search for data...">
+<br>
+
+<table border=" 1px solid aliceblue;" id="data-table">
+    <tr>
+        <% for ( let key of keys){%>
+            <th>
+                <%=key%>
+            </th>
+            <%}%>
+    </tr>
+    <% for( let row of results){%>
+        <tr>
+            <% for ( let key of keys){%>
+                <td>
+                    <%=row[key]%>
+                </td>
+                <%}%>
+        </tr>
+        <%}%>
+</table>
