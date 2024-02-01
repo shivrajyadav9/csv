@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-// mongoose.connect(`mongodb://0.0.0.0:27017/csv_development`);
+// mongoose connection to mongoDB Atlas
 mongoose.connect('mongodb+srv://shivraj:mongodbcluster@cluster0.fk9lx9t.mongodb.net/csv?retryWrites=true&w=majority');
 
 const db = mongoose.connection;

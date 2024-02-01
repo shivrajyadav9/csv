@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+
+// Schema for CSV file
 let csvSchema = new mongoose.Schema({
     name: {
         type: String
@@ -15,6 +17,8 @@ let csvSchema = new mongoose.Schema({
     }
 });
 
+
+// Setting up Multer for disk storage
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, '../uploads'));

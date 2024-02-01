@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dataTable = document.getElementById('data-table');
     const rows = dataTable.getElementsByTagName('tr');
 
+    // for searching content in the table
     searchInput.addEventListener('keyup', () => {
         const filter = searchInput.value.toLowerCase();
 

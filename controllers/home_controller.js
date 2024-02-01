@@ -2,6 +2,7 @@ import CSV from '../models/csv_file.js';
 import csv from 'csv-parser';
 import { createReadStream } from 'fs';
 
+// All the uploaded files passed to home views
 let home = async function (req, res) {
     let files = await CSV.find({});
     return res.render('home', {
@@ -9,12 +10,12 @@ let home = async function (req, res) {
     })
 }
 
+// upload and save files using Multer
 let upload = async function (req, res) {
 
     CSV.uploadedCSV(req, res, function (err) {
         if (err) { console.log('******Multer Error ', err); return; }
 
-        // console.log(req.file);
         let newFile = CSV.create({
             name: req.body.file_name,
             file: `./uploads/${req.file.filename}`
@@ -24,6 +25,8 @@ let upload = async function (req, res) {
     })
 }
 
+
+// read the csv file using csv-parser and converting it into array
 let file = async function (req, res) {
     try {
         let csvFile = await CSV.findById(req.params.id);
@@ -32,9 +35,9 @@ let file = async function (req, res) {
             .pipe(csv())
             .on('data', (data) => results.push(data))
             .on('end', () => {
-                // console.log(results);
+              
                 let keys = Object.keys(results[0]);
-                // console.log(keys);
+                
                 return res.render('file', {
                     file_name:csvFile.name,
                     keys: keys,
